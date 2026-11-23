@@ -1,0 +1,11 @@
+@use "~/assets/scss/tokens" as *;
+
+// Only on wide screens ($mq-min-width-mobile, see styles.scss)
+.example-component {
+  gap: $space-3;
+  padding: $space-6;
+
+  &__title {
+    font-size: $font-size-xl;
+  }
+}

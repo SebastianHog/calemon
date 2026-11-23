@@ -1,0 +1,27 @@
+@use "~/assets/scss/tokens" as *;
+@use "~/assets/scss/mixins" as *;
+
+// Mobile first: these apply on every screen size
+.example-component {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  padding: $space-4;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-primary;
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+  }
+
+  &__body {
+    color: $color-text-muted;
+  }
+
+  &--highlighted {
+    border-color: $color-primary;
+  }
+}
