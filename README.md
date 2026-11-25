@@ -25,22 +25,22 @@ Dates are ISO 8601 in UTC, e.g. `2026-12-01T09:00:00Z`.
 
 ### Events
 
-| Method   | Route                        | Description                    | Success |
-| -------- | ---------------------------- | ------------------------------ | ------- |
-| `GET`    | `/api/calendar/events/year`  | Events in the selected year    | `200`   |
-| `GET`    | `/api/calendar/events/month` | Events in the selected month   | `200`   |
-| `GET`    | `/api/calendar/events/week`  | Events in the selected week    | `200`   |
-| `GET`    | `/api/calendar/events/day`   | Events on the selected day     | `200`   |
-| `POST`   | `/api/calendar/events`       | Create an event                | `201`   |
-| `PUT`    | `/api/calendar/events/{id}`  | Update an event                | `200`   |
-| `DELETE` | `/api/calendar/events/{id}`  | Delete an event                | `204`   |
+| Method   | Route                        | Description                  | Success |
+| -------- | ---------------------------- | ---------------------------- | ------- |
+| `GET`    | `/api/calendar/events/year`  | Events in the selected year  | `200`   |
+| `GET`    | `/api/calendar/events/month` | Events in the selected month | `200`   |
+| `GET`    | `/api/calendar/events/week`  | Events in the selected week  | `200`   |
+| `GET`    | `/api/calendar/events/day`   | Events on the selected day   | `200`   |
+| `POST`   | `/api/calendar/events`       | Create an event              | `201`   |
+| `PUT`    | `/api/calendar/events/{id}`  | Update an event              | `200`   |
+| `DELETE` | `/api/calendar/events/{id}`  | Delete an event              | `204`   |
 
 `GET` query parameters:
 
-| Parameter     | Example                       | Description                            |
-| ------------- | ----------------------------- | -------------------------------------- |
+| Parameter     | Example                       | Description                                  |
+| ------------- | ----------------------------- | -------------------------------------------- |
 | `date`        | `date=2026-12-01`             | Any date in the selected year/month/week/day |
-| `calendarIds` | `calendarIds=1&calendarIds=2` | One or more active calendars           |
+| `calendarIds` | `calendarIds=1&calendarIds=2` | One or more active calendars                 |
 
 `POST` / `PUT` body:
 
@@ -48,7 +48,7 @@ Dates are ISO 8601 in UTC, e.g. `2026-12-01T09:00:00Z`.
 {
   "calendarId": 1,
   "title": "Dentist",
-  "description": "Bring insurance card",
+  "description": "Bring my teeth",
   "start": "2026-12-01T09:00:00Z",
   "end": "2026-12-01T10:00:00Z",
   "allDay": false

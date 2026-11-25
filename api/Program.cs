@@ -1,30 +1,16 @@
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
 
 app.UseHttpsRedirection();
 
-app.MapGet("/events", () =>
-{
-    var forecast = "hello";
+var eventsApi = app.MapGroup("/api/calendar/events");
 
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+eventsApi.MapGet("/year", () => "Year");
+eventsApi.MapGet("/month", () => "Month");
+eventsApi.MapGet("/week", () => "Week");
+eventsApi.MapGet("/day", () => "Day");
+
+
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
