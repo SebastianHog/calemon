@@ -1,21 +1,30 @@
 using api.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
+
+builder.Services.AddDbContext<AppDbContext>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
+
 var app = builder.Build();
 
 app.UseHttpsRedirection();
 
 var eventsApi = app.MapGroup("/api/calendar/events");
 
-eventsApi.MapGet("/date", (DateOnly from, DateOnly to) =>
+eventsApi.MapGet("/date", async (DateOnly from, DateOnly to, AppDbContext db) =>
 {
-    return $"{from} to {to}";
+    var start = from.ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc);
+    var end = to.AddDays(1).ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc);
+
+    return await db.Events.Where(e => e.Start < end && e.End >= start).ToListAsync();
 });
 
-eventsApi.MapPost("/event", (Event newEvent) =>
+eventsApi.MapPost("/event", async (Event newEvent, AppDbContext db) =>
 {
-    return newEvent;
+    db.Events.Add(newEvent);
+    await db.SaveChangesAsync();
+    return Results.Created($"/api/calendar/events/{newEvent.Id}", newEvent);
 });
 
 
