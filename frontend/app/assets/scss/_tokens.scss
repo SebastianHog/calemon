@@ -1,7 +1,8 @@
 $color-background: #cee0dc;
 $color-border: #e3e3e8;
 $color-primary: #afaab9;
-$color-primary-hover: #b9cfd4;
+$color-primary-accent: #b9cfd4;
+$color-hover: #00000033;
 
 $color-pink: #b48291;
 
@@ -18,6 +19,7 @@ $font-size-base: 1rem;
 $font-size-lg: 1.125rem;
 $font-size-xl: 1.25rem;
 $font-size-2xl: 1.5rem;
+$font-size-3xl: 2rem;
 
 $font-weight-normal: 400;
 $font-weight-medium: 500;
@@ -37,6 +39,7 @@ $space-12: 3rem;
 
 $radius-sm: 4px;
 $radius-md: 8px;
+$radius-lg: 16px;
 $radius-full: 9999px;
 
 $shadow-sm: 0 1px 2px rgb(0 0 0 / 5%);
